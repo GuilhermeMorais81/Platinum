@@ -1,0 +1,32 @@
+#header-row-1 {
+    display: flex;
+    align-items: center;
+}
+
+#logo-container img {
+    margin: .5rem 0 0 .5rem;
+    background-color: green;
+}
+
+#register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    padding-left: 4rem;
+}
+
+header {
+    border: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-bg-gray {
+    color: #FFF;
+    background-color: #1f1f1f;
+}
