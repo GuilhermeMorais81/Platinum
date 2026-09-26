@@ -30,3 +30,9 @@ footer {
     color: #FFF;
     background-color: #1f1f1f;
 }
+
+.small-text {
+    font-size: 1rem;
+    color: gray;
+    text-decoration: underline;
+}
