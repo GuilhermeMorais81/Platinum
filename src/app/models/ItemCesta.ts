@@ -1,6 +1,6 @@
 import { Game } from "./Game";
 
-class ItemCesta {
+export class ItemCesta {
     game : Game | null = null;
     total : number;
     quantity : number;
