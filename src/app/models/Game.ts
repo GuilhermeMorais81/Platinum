@@ -20,6 +20,10 @@ export class Game {
         else return this.title.slice(0, 37) + "...";
     }
 
+    getFullTitle() : string {
+        return this.title;
+    }
+
     getPrice() : string {
         if(this.salesPercent == 0) 
             return this.price.toFixed(2);
