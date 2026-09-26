@@ -1,0 +1,93 @@
+<div class="m-4">
+    <header>
+        <h1>Cadastro</h1>
+        <p>Complete os campos com seus dados.</p>
+        <hr>
+    </header>
+    <form class="d-flex flex-column gap-4 w-50" #cadastroForm="ngForm" ngNativeValidate (ngSubmit)="checkPasswordConfirm()">
+        <div>
+            <label for="txtName" class="form-label">Nome</label>
+            <input
+                type="text" 
+                class="form-control" 
+                placeholder="Digite seu nome..." 
+                id="txtName" 
+                required
+                minlength="3"
+                maxlength="160"
+            >
+        </div>
+        <div>
+            <label for="txtEmail" class="form-label">Email</label>
+            <input
+                type="Email" 
+                class="form-control" 
+                placeholder="Digite seu email..." 
+                id="txtEmail" 
+                required
+            >
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="txtPassword" class="form-label">Senha</label>
+                <input
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Digite a senha..." 
+                    id="txtPassword" 
+                    required
+                    aria-describedby="passwordHelp"
+                    pattern="^(?=(?:\D*\d){5}).{16,}$"
+                    name="password"
+                    ngModel
+                >
+            </div>
+            <div class="col">
+                <label for="txtPassword" class="form-label">Confirmar senha</label>
+                <input
+                    type="password" 
+                    class="form-control" 
+                    placeholder="confirme sua senha" 
+                    id="txtConfirmPassword" 
+                    required
+                    aria-describedby="passwordHelp"
+                    pattern="^(?=(?:\D*\d){5}).{16,}$"
+                    name="confirmPassword"
+                    ngModel
+                >
+            </div>
+            <div id="passwordHelp" class="form-text">Sua senha deve conter pelo menos 16 caracteres que contenham ao menos 5 digitos.</div>
+        </div>
+        <div>
+            <label for="txtCPF" class="form-label">CPF</label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder="digite seu CPF..."
+                id="txtCPF"
+                required
+                pattern="^(?:\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$"
+                aria-describedby="CPFHelp"
+            >
+            <div id="CPFHelp" class="form-text text-decoration-underline">Siga o padrão: "000.000.000-00"</div>
+        </div>
+        <div>
+            <label for="txtPhone" class="form-label">Telefone</label>
+            <input 
+                type="text"
+                pattern="^\(\d{2}\) \d{4,5}-\d{4}$"
+                class="form-control"
+                placeholder="digite seu telefone..."
+                id="txtPhone"
+                required
+                aria-describedby="phoneHelp"
+            >
+            <div id="phoneHelp" class="form-text text-decoration-underline">Siga o padrão: "(00) 00000-0000" ou "(00) 0000-0000"</div>
+        </div>
+        <div class="alert alert-danger" role="alert" [class.hidden]="passwdWarningDisabled">
+            As senhas devem coincidir.
+        </div>
+        <button class="w-50 btn btn-primary" type="submit">Enviar</button>
+    
+    </form>
+</div>
