@@ -1,8 +1,8 @@
 <div class="row p-2 d-flex justify-content-center w-100">
     <div class="card card-black w-25 h-25 m-1" *ngFor="let game of lista">
-        <a href="">
+        <div class="pointer" (click)="showDetail(game)">
             <img src="{{game.id}}.webp" alt="game-img" class="card-img-top">
-        </a>
+        </div>
         <div class="card-body d-flex flex-column">
             <h5 class="card-title fs-6">{{game.getTitle()}}</h5>
             <div id="price-container" class="mb-5">

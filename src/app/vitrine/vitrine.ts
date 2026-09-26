@@ -42,5 +42,13 @@ export class Vitrine {
     new Date('2016-02-13'),
     'O ultimo titulo lançado da iconica serie de operações taticas de espionagem por Hideo Kojima.'
   )
-];
+  ];
+
+
+
+  showDetail(game : Game) {
+    localStorage.setItem("gameDetail", JSON.stringify(game));
+    location.href="./detalhe";
+  }
+
 }
