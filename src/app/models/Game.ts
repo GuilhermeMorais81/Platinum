@@ -31,6 +31,13 @@ export class Game {
             return (this.price * (1 - this.salesPercent)).toFixed(2);
     }
 
+    getPriceNumber() : number {
+        if(this.salesPercent == 0) 
+            return this.price;
+        else 
+            return (this.price * (1 - this.salesPercent));
+    }
+
     getFullPrice() : string {
         return this.price.toFixed(2);
     }
