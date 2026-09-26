@@ -1,0 +1,33 @@
+<h1 class="h1 m-5" *ngIf="notFound; else found">Game not found...</h1>
+<ng-template #found>
+    <div class="row" id="container">
+        <div class="col d-flex justify-content-center align-items-center">
+            <figure class="figure w-75 border border-5 d-flex justify-content-center">
+                <img id="game-img" src="{{game?.id}}.webp" alt="game image" class="figure-img img-fluid">
+            </figure>
+        </div>
+        <div class="col">
+            <div class="border-bottom border-2">
+                <h1 class="h1">{{game?.getFullTitle()}}</h1>
+            </div>
+            
+            <div class="d-flex flex-column m-3">
+                <div id="has-sale" class="d-flex flex-diretion-row gap-3" *ngIf="game?.onSale(); else justPrice">
+                    <p class="fs-4">R${{game.getPrice()}}</p>
+                    <p class="text-decoration-line-through fs-4">{{game.getFullPrice()}}</p>
+                </div>
+                <ng-template #justPrice>
+                    <p id="product-price"><span class="money-symbol">R$</span>{{game?.getPrice()}}</p>
+                </ng-template>
+                <form>
+                    <button type="submit" class="btn btn-outline-primary w-50">Adicionar à cesta</button>
+                </form>
+                <div class="mt-5">
+                    <p class="border-bottom border-2 fs-5">Descrição:</p>
+                    <p>Data de lançamento: {{game?.releaseDate | date : 'dd/MM/yyyy'}}</p>
+                    <p>{{game?.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
