@@ -1,0 +1,7 @@
+<div class="h1 m-5" *ngIf="notFound; else found">Pesquisa não encontrada...</div>
+<ng-template #found>
+    <div class="w-75 text-start m-5 border-bottom">
+        <h1 class="h1">Pesquisa por: {{query}}</h1>
+    </div>
+    <app-vitrine></app-vitrine>
+</ng-template>
