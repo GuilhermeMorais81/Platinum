@@ -21,7 +21,6 @@ export class App {
 
   sendQuery() : void {
     localStorage.setItem("query", JSON.stringify(this.query));
-    if(this.router.url === "/busca") window.location.reload();
-    else this.router.navigate(["/busca"]);
+    this.router.navigate(["/busca"]);
   }
 }

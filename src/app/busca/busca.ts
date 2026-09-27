@@ -22,6 +22,5 @@ export class Busca implements OnInit {
 
   ngOnInit(): void {
     this.getQueryFromStorage();
-    localStorage.removeItem('query');
   }
 }
