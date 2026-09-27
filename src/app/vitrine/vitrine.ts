@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from "../models/Game";
+import { Cesta } from '../cesta/cesta';
+import { ItemCesta } from '../models/ItemCesta';
+import { CestaModel } from '../models/CestaModel';
 
 @Component({
   imports: [CommonModule],
@@ -44,11 +47,36 @@ export class Vitrine {
   )
   ];
 
-
-
   showDetail(game : Game) {
     localStorage.setItem("gameDetail", JSON.stringify(game));
     location.href="./detalhe";
   }
 
+  addToCesta(game : Game){
+    let cesta : CestaModel = this.getCesta();
+    let item : ItemCesta = new ItemCesta(game, 1);
+    let itemRepetido = cesta.itens.find(x => x.game?.id === item.game?.id)
+    if(itemRepetido) this.increaseItemQuantity(itemRepetido, 1);
+    else cesta.itens.push(item);
+    localStorage.setItem("cesta", JSON.stringify(cesta));
+    location.href = "./cesta";
+  }
+
+  getCesta() {
+    let json = localStorage.getItem("cesta");
+    //se a cesta ja existir carrega com os itens atuais
+    if(json != null && json != undefined)
+      return Object.assign(new CestaModel(), JSON.parse(json));
+    else
+      return new CestaModel();
+  }
+
+  increaseItemQuantity(item : ItemCesta, increase : number) {
+    item.quantity += increase;
+    this.updateTotal(item);
+  }
+
+  updateTotal(item : ItemCesta) {
+    item.total = item.quantity * item.game?.getPriceNumber()!;
+  }
 }

@@ -14,7 +14,7 @@
                     <h6 class="card-subtitle mb-2 text-decoration-underline">{{game.getPrice()}}</h6>
                 </ng-template>
             </div>
-            <a href="" class="btn btn-primary position-absolute bottom-0 end-0 m-2">Comprar</a>
+            <a (click)="addToCesta(game)" class="btn btn-primary position-absolute bottom-0 end-0 m-2">Comprar</a>
         </div>
     </div>
 </div>
