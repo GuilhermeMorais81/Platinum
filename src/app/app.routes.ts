@@ -3,11 +3,13 @@ import { Vitrine } from './vitrine/vitrine';
 import { Cadastro } from './cadastro/cadastro';
 import { Detalhe } from './detalhe/detalhe';
 import { Cesta } from './cesta/cesta';
+import { Busca } from './busca/busca';
 
 export const routes: Routes = [
     {path:"", component:Vitrine},
     {path:"vitrine", component:Vitrine},
     {path:"cadastro", component:Cadastro},
     {path:"detalhe", component:Detalhe},
-    {path:"cesta", component:Cesta}
+    {path:"cesta", component:Cesta},
+    {path:"busca", component:Busca}
 ];
