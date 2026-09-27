@@ -5,8 +5,8 @@
         </div>
         <div id="search-bar-container" class="col-md-8">
             <div class="col-md-4 mt-5 w-100 input-group">
-                <input type="text" class="form-control" placeholder="Procure por algum jogo...">
-                <button class="btn btn-dark">Pesquisar</button>
+                <input (input)="catchQuery($event)" type="text" class="form-control" placeholder="Procure por algum jogo...">
+                <button (click)="sendQuery()" class="btn btn-dark">Pesquisar</button>
             </div>
         </div>
         <a id="register-container" class="col-md-2" href="" title="fazer login">
