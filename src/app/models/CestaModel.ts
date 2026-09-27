@@ -1,5 +1,5 @@
 import { ItemCesta } from "./ItemCesta";
 
-class Cesta {
+export class CestaModel {
     itens : ItemCesta[] = [];
 }

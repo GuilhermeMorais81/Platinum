@@ -2,8 +2,8 @@ import { Game } from "./Game";
 
 export class ItemCesta {
     game : Game | null = null;
-    total : number;
     quantity : number;
+    total : number;
 
     constructor(game : Game, quantity: number) {
         this.game = game;
