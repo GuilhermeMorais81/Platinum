@@ -2,11 +2,15 @@ import { Injectable, Service, inject } from '@angular/core';
 import { Game } from './models/Game';
 import { CestaModel } from './models/CestaModel';
 import { ItemCesta } from './models/ItemCesta';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CestaService {
+
+    private router = inject(Router);
+
     addToCesta(game : Game){
         let cesta : CestaModel = this.getCesta();
         let item : ItemCesta = new ItemCesta(game, 1);
@@ -14,7 +18,7 @@ export class CestaService {
         if(itemRepetido) this.increaseItemQuantity(itemRepetido, 1);
         else cesta.itens.push(item);
         localStorage.setItem("cesta", JSON.stringify(cesta));
-        location.href = "./cesta";
+        this.router.navigate(['/cesta']);
     }
 
     getCesta() {

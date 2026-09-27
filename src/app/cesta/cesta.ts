@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CestaModel } from '../models/CestaModel';
 import { CommonModule } from '@angular/common';
 import { ItemCesta } from '../models/ItemCesta';
+import { CestaService } from '../cesta-service';
 
 @Component({
   imports: [CommonModule],
@@ -9,15 +10,12 @@ import { ItemCesta } from '../models/ItemCesta';
   styleUrl: './cesta.css',
   templateUrl: './cesta.html',
 })
-export class Cesta {
+export class Cesta implements OnInit {
+  private cestaService = inject(CestaService)
   cesta : CestaModel = new CestaModel();
 
   ngOnInit(): void {
-    let json = localStorage.getItem("cesta");
-    if(json) {
-      this.cesta = Object.assign(new CestaModel(), JSON.parse(json));
-    }
-    else console.log("CESTA NOT FOUND");
+    this.cesta = this.cestaService.getCesta();
   }
 
   isEmpty() : boolean {

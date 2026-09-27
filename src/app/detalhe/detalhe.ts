@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from '../models/Game';
 import { DatePipe } from '@angular/common';
+import { CestaService } from '../cesta-service';
 
 @Component({
   imports: [CommonModule, DatePipe],
@@ -10,7 +11,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './detalhe.html',
 })
 export class Detalhe implements OnInit {
-
+  private cestaService = inject(CestaService);
   game : Game | null = null;
   
   get notFound() : boolean {
@@ -20,5 +21,9 @@ export class Detalhe implements OnInit {
   ngOnInit(): void {
     let json : string | null = localStorage.getItem("gameDetail");
     if(json !== null) this.game = Object.assign(new Game(0, "", 0, 0, new Date(), ""), JSON.parse(json));
+  }
+
+  addToCesta(game : Game) {
+    this.cestaService.addToCesta(game);
   }
 }

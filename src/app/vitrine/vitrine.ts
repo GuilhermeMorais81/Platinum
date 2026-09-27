@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from "../models/Game";
-import { Cesta } from '../cesta/cesta';
-import { ItemCesta } from '../models/ItemCesta';
-import { CestaModel } from '../models/CestaModel';
+import { Router } from '@angular/router';
+import { CestaService } from '../cesta-service';
 
 @Component({
   imports: [CommonModule],
@@ -12,6 +11,9 @@ import { CestaModel } from '../models/CestaModel';
   templateUrl: './vitrine.html',
 })
 export class Vitrine {
+  private router = inject(Router);
+  private cestaService = inject(CestaService);
+
   lista: Game[] = [
   new Game(
     1,
@@ -49,41 +51,10 @@ export class Vitrine {
 
   showDetail(game : Game) {
     localStorage.setItem("gameDetail", JSON.stringify(game));
-    location.href="./detalhe";
+    this.router.navigate(['/detalhe'])
   }
 
-  addToCesta(game : Game){
-    let cesta : CestaModel = this.getCesta();
-    let item : ItemCesta = new ItemCesta(game, 1);
-    let itemRepetido = cesta.itens.find(x => x.game?.id === item.game?.id)
-    if(itemRepetido) this.increaseItemQuantity(itemRepetido, 1);
-    else cesta.itens.push(item);
-    localStorage.setItem("cesta", JSON.stringify(cesta));
-    location.href = "./cesta";
-  }
-
-  getCesta() {
-    let json = localStorage.getItem("cesta");
-    //se a cesta ja existir carrega com os itens atuais
-    if(json != null && json != undefined)
-      return Object.assign(new CestaModel(), JSON.parse(json));
-    else
-      return new CestaModel();
-  }
-
-  increaseItemQuantity(item : ItemCesta, increase : number) {
-    item.quantity += increase;
-    this.updateTotal(item);
-  }
-
-  updateTotal(item : ItemCesta) {
-    item.total = item.quantity * this.getPrice(item.game!);
-  }
-
-  getPrice(game : Game) : number {
-    if(game.salesPercent == 0) 
-        return game.price;
-    else 
-        return (game.price * (1 - game.salesPercent));
+  addToCesta(game : Game) {
+    this.cestaService.addToCesta(game);
   }
 }
