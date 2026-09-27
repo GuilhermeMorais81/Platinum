@@ -4,7 +4,7 @@
         <p>Complete os campos com seus dados.</p>
         <hr>
     </header>
-    <form class="d-flex flex-column gap-4 w-50" #cadastroForm="ngForm" ngNativeValidate (ngSubmit)="checkPasswordConfirm()">
+    <form class="d-flex flex-column gap-4 col-md-8 col-12" #cadastroForm="ngForm" ngNativeValidate (ngSubmit)="checkPasswordConfirm()">
         <div>
             <label for="txtName" class="form-label">Nome</label>
             <input
@@ -28,7 +28,7 @@
             >
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-6 mb-2">
                 <label for="txtPassword" class="form-label">Senha</label>
                 <input
                     type="password" 
@@ -42,7 +42,7 @@
                     ngModel
                 >
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <label for="txtPassword" class="form-label">Confirmar senha</label>
                 <input
                     type="password" 

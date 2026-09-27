@@ -1,8 +1,8 @@
 <h1 class="h1 m-5" *ngIf="notFound; else found">Game not found...</h1>
 <ng-template #found>
     <div class="row" id="container">
-        <div class="col d-flex justify-content-center align-items-center">
-            <figure class="figure w-75 border border-5 d-flex justify-content-center">
+        <div class="col-md-8 col-12">
+            <figure class="figure w-75 border border-5 ">
                 <img id="game-img" src="{{game?.id}}.webp" alt="game image" class="figure-img img-fluid">
             </figure>
         </div>

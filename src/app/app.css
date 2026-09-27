@@ -1,11 +1,11 @@
 #header-row-1 {
     display: flex;
     align-items: center;
+    flex-direction: row;
 }
 
 #logo-container img {
     margin: .5rem 0 0 .5rem;
-    background-color: green;
 }
 
 #register-container {
@@ -36,3 +36,4 @@ footer {
     color: gray;
     text-decoration: underline;
 }
+

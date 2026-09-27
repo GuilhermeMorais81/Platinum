@@ -5,3 +5,10 @@
 figure {
     padding: 12rem 2rem 12rem 2rem;
 }
+
+
+@media screen and (orientation: portrait) {
+    figure {
+        padding: 6rem 1rem 6rem 1rem;
+    }
+}

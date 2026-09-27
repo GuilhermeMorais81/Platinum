@@ -1,5 +1,5 @@
-<div class="m-5 d-flex justify-content-center align-items-center flex-column w-100 h-100 gap-3">
-    <div class="w-100 text-start">
+<div id="container" class="d-flex justify-content-center align-items-center flex-column gap-3">
+    <div class="w-75 text-start">
         <h1 class="h1">Cesta</h1>
     </div>
     <div class="w-75">
@@ -29,7 +29,7 @@
         <p>Total</p>
         <p>{{getTotalValue()}}</p>
     </div>
-    <div class="d-flex flex-direction-row gap-3">
+    <div class="d-flex flex-direction-row gap-5">
         <button (click)="cleanCesta()" class="btn btn-danger">Limpar Cesta</button>
         <button class="btn btn-primary">Confirmar Compra</button>
     </div>
