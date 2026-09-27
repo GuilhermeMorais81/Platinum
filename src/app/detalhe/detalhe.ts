@@ -21,6 +21,7 @@ export class Detalhe implements OnInit {
   ngOnInit(): void {
     let json : string | null = localStorage.getItem("gameDetail");
     if(json !== null) this.game = Object.assign(new Game(0, "", 0, 0, new Date(), ""), JSON.parse(json));
+    localStorage.removeItem("gameDetail");
   }
 
   addToCesta(game : Game) {
