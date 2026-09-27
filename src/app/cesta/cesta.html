@@ -2,8 +2,8 @@
     <div class="w-100 text-start">
         <h1 class="h1">Cesta</h1>
     </div>
-    <div>
-        <div *ngIf="estaVazio(); else noEmpty" class="card">
+    <div class="w-75">
+        <div *ngIf="isEmpty(); else noEmpty" class="card">
             <div class="card-body fs-6">Você ainda não adicionou items em sua cesta...</div>
         </div>           
         <ng-template #noEmpty>
@@ -17,8 +17,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of cesta.itens">
-                        <td>{{item.game?.getTitle()}}</td>
-                        <td>{{item.game?.getPrice()}}</td>
+                        <td>{{item.game?.title}}</td>
+                        <td>{{getPrice(item)}}</td>
                         <td>{{item?.quantity}}</td>
                     </tr>
                 </tbody>
@@ -27,10 +27,10 @@
     </div>
     <div id="total-container">
         <p>Total</p>
-        <p>{{calcValorTotal()}}</p>
+        <p>{{getTotalValue()}}</p>
     </div>
     <div class="d-flex flex-direction-row gap-3">
-        <button class="btn btn-danger">Limpar Cesta</button>
+        <button (click)="cleanCesta()" class="btn btn-danger">Limpar Cesta</button>
         <button class="btn btn-primary">Confirmar Compra</button>
     </div>
 </div>

@@ -77,6 +77,13 @@ export class Vitrine {
   }
 
   updateTotal(item : ItemCesta) {
-    item.total = item.quantity * item.game?.getPriceNumber()!;
+    item.total = item.quantity * this.getPrice(item.game!);
+  }
+
+  getPrice(game : Game) : number {
+    if(game.salesPercent == 0) 
+        return game.price;
+    else 
+        return (game.price * (1 - game.salesPercent));
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CestaModel } from '../models/CestaModel';
 import { CommonModule } from '@angular/common';
+import { ItemCesta } from '../models/ItemCesta';
 
 @Component({
   imports: [CommonModule],
@@ -14,26 +15,31 @@ export class Cesta {
   ngOnInit(): void {
     let json = localStorage.getItem("cesta");
     if(json) {
-      this.cesta = JSON.parse(json);
+      this.cesta = Object.assign(new CestaModel(), JSON.parse(json));
     }
     else console.log("CESTA NOT FOUND");
   }
 
-  estaVazio() : boolean {
+  isEmpty() : boolean {
     return this.cesta.itens.length == 0;
   }
 
-  calcQuantidadeTotal() : number {
-    let sum : number = 0;
-    for(let item of this.cesta.itens) 
-      sum = sum + item.quantity;
-    return sum;
-  }
-
-  calcValorTotal(): string {
+  getTotalValue(): string {
     let sum : number = 0;
     for(let item of this.cesta.itens) 
       sum = sum + item.total;
     return sum.toFixed(2);
+  }
+
+  getPrice(item : ItemCesta) : string {
+    if(item.game?.salesPercent == 0) 
+      return item.game?.price.toFixed(2);
+    else 
+      return (item.game?.price! * (1 - item.game?.salesPercent!)).toFixed(2);
+  }
+
+  cleanCesta() {
+    localStorage.removeItem("cesta");
+    window.location.reload();
   }
 }
