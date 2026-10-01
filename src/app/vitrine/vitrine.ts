@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Game } from "../models/Game";
 import { Router } from '@angular/router';
@@ -13,6 +13,8 @@ import { CestaService } from '../cesta-service';
 export class Vitrine {
   private router = inject(Router);
   private cestaService = inject(CestaService);
+
+  @Input() filtro: string = '';
 
   lista: Game[] = [
   new Game(
@@ -48,6 +50,14 @@ export class Vitrine {
     'O ultimo titulo lançado da iconica serie de operações taticas de espionagem por Hideo Kojima.'
   )
   ];
+
+  get listaFiltrada(): Game[] {
+    if (!this.filtro) {
+      return this.lista;
+    }
+    const termo = this.filtro.toLowerCase();
+    return this.lista.filter(game => game.getTitle().toLowerCase().includes(termo));
+  }
 
   showDetail(game : Game) {
     localStorage.setItem("gameDetail", JSON.stringify(game));

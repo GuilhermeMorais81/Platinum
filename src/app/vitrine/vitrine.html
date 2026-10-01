@@ -1,5 +1,5 @@
-<div class="row p-2 d-flex justify-content-center w-100">
-    <div class="card card-black col-md-4 col-8 m-1" *ngFor="let game of lista">
+<div class="row p-2 d-flex justify-content-center w-100" *ngIf="listaFiltrada.length > 0; else semResultado">
+    <div class="card card-black col-md-4 col-8 m-1" *ngFor="let game of listaFiltrada">
         <div class="pointer mb-3" (click)="showDetail(game)">
             <img src="{{game.id}}.webp" alt="game-img" class="card-img-top">
         </div>
@@ -18,3 +18,8 @@
         </div>
     </div>
 </div>
+<ng-template #semResultado>
+    <div class="text-center py-5 text-muted" *ngIf="filtro">
+        Nenhum jogo encontrado para "{{filtro}}".
+    </div>
+</ng-template>

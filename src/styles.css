@@ -1,4 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --cor-primaria: #1f1f1f;
+    --cor-primaria-escura: #161616;
+    --cor-destaque: #b3121a;
+    --cor-destaque-escura: #8a0e14;
+    --cor-fundo: #f4f4f4;
+    --fonte-titulo: 'Bebas Neue', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
+}
+h2 {
+    font-size: clamp(1.35rem, 2vw + 1rem, 1.9rem);
+}
+h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+    letter-spacing: 0.03em;
+}
+
 a {
     text-decoration: none;
     color: #000;
@@ -7,3 +39,52 @@ a {
 .text-gray {
     color: gray;
 }
+
+.btn {
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--cor-destaque-escura);
+    border-color: var(--cor-destaque-escura);
+}
+
+.btn-outline-primary {
+    color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+    color: #fff;
+}
+
+.alert-success {
+    background-color: #eaf6ec;
+    border-color: #bfe3c4;
+    color: #1e5b2a;
+}
+
+.alert-danger {
+    background-color: #fbe9e9;
+    border-color: #f0c1c1;
+    color: #7a1414;
+}
+
+@media (min-width: 1400px) {
+    .container, .w-75 {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+

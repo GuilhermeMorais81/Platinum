@@ -16,3 +16,22 @@
 .pointer {
     cursor: pointer;
 }
+
+.card-black {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+}
+.card-black:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.card-black .card-title {
+    min-height: 2.5rem;
+}
+
+.card-black .card-subtitle.text-decoration-underline {
+    color: var(--cor-destaque);
+    text-decoration-color: var(--cor-destaque);
+    font-weight: 600;
+}

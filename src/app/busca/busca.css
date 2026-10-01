@@ -1,0 +1,14 @@
+:host {
+    display: block;
+}
+
+.h1 {
+    font-family: var(--fonte-titulo);
+    letter-spacing: 0.03em;
+}
+
+.border-bottom {
+    border-color: var(--cor-destaque) !important;
+    border-width: 2px !important;
+    padding-bottom: 0.75rem;
+}

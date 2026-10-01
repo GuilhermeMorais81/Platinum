@@ -1,0 +1,42 @@
+<div class="m-4 d-flex justify-content-center">
+    <div class="row g-0 col-lg-8 col-12 cartao-login">
+
+        <div class="col-md-7 p-4">
+            <h2 class="h4 mb-3">Já tenho cadastro</h2>
+            <form class="d-flex flex-column gap-3" ngNativeValidate (ngSubmit)="entrar()">
+                <div>
+                    <label for="txtEmail" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Digite seu email..."
+                        id="txtEmail"
+                        required
+                    >
+                </div>
+                <div>
+                    <label for="txtSenha" class="form-label">Senha</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Digite sua senha..."
+                        id="txtSenha"
+                        required
+                        minlength="6"
+                    >
+                </div>
+                <div class="text-end">
+                    <a href="esqueci-senha" class="small">Esqueci minha senha</a>
+                </div>
+                <button class="w-50 btn btn-primary" type="submit">Entrar</button>
+            </form>
+        </div>
+
+        <div class="col-md-5 p-4 painel-cadastro d-flex flex-column justify-content-center text-center">
+            <h2 class="h5 mb-3">Ainda não tenho cadastro</h2>
+            <p class="text-white-50">Crie sua conta gratuitamente e acompanhe seus pedidos com mais facilidade.</p>
+            <a href="cadastro" class="btn btn-light fw-semibold">Cadastre-se</a>
+        </div>
+
+    </div>
+</div>

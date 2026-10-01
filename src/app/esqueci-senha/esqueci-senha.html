@@ -1,0 +1,26 @@
+<div class="m-4 d-flex justify-content-center">
+    <div class="col-md-6 col-12">
+        <header>
+            <h1>Esqueci minha senha</h1>
+            <p>Informe o seu email para receber as instruções de recuperação.</p>
+            <hr>
+        </header>
+        <form class="d-flex flex-column gap-4" ngNativeValidate (ngSubmit)="enviarInstrucoes()">
+            <div>
+                <label for="txtEmailRecuperacao" class="form-label">Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Digite seu email..."
+                    id="txtEmailRecuperacao"
+                    required
+                >
+            </div>
+            <div class="alert alert-success" role="alert" [class.hidden]="!mensagemVisivel">
+                Se este email estiver cadastrado, enviamos as instruções de recuperação.
+            </div>
+            <button class="w-50 btn btn-primary" type="submit">Enviar</button>
+            <p class="small"><a href="login">Voltar para o login</a></p>
+        </form>
+    </div>
+</div>
