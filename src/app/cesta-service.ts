@@ -22,11 +22,13 @@ export class CestaService {
     }
 
     getCesta() {
-        let json = localStorage.getItem("cesta");
-        if(json != null && json != undefined)
-            return Object.assign(new CestaModel(), JSON.parse(json));
-        else
-            return new CestaModel();
+        if (typeof localStorage !== 'undefined') {
+            const json = localStorage.getItem("cesta");
+            if (json) {
+                return Object.assign(new CestaModel(), JSON.parse(json));
+            }
+        }
+        return new CestaModel();
     }
 
     increaseItemQuantity(item : ItemCesta, increase : number) {
