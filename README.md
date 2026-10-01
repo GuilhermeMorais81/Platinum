@@ -1,5 +1,5 @@
-## Programação para WEB - projeto
+# Programação para WEB - projeto
 
-# Integrantes:
+## Integrantes:
 - Guilherme Rizzo Morais
 - Matheus Lopes Trentino
